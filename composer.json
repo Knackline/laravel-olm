@@ -1,0 +1,67 @@
+{
+    "name": "knackline/laravel-olm",
+    "description": "Laravel package for on-device / local language models (MLX, Ollama, LM Studio, llama.cpp, vLLM)",
+    "type": "library",
+    "license": "MIT",
+    "keywords": [
+        "laravel",
+        "llm",
+        "mlx",
+        "ollama",
+        "lm-studio",
+        "llama.cpp",
+        "vllm",
+        "local-ai",
+        "on-device",
+        "openai-compatible"
+    ],
+    "homepage": "https://github.com/knackline/laravel-olm",
+    "support": {
+        "issues": "https://github.com/knackline/laravel-olm/issues",
+        "source": "https://github.com/knackline/laravel-olm"
+    },
+    "authors": [
+        {
+            "name": "Rajkumar Samra",
+            "email": "rajkumarsamra@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^8.1",
+        "illuminate/support": "^9.0|^10.0|^11.0|^12.0",
+        "illuminate/http": "^9.0|^10.0|^11.0|^12.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.0|^10.0|^11.0",
+        "orchestra/testbench": "^7.0|^8.0|^9.0|^10.0",
+        "mockery/mockery": "^1.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "Knackline\\Olm\\": "src/"
+        },
+        "files": [
+            "src/Support/helpers.php"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Knackline\\Olm\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Knackline\\Olm\\Providers\\OlmServiceProvider"
+            ],
+            "aliases": {
+                "Olm": "Knackline\\Olm\\Facades\\Olm"
+            }
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
