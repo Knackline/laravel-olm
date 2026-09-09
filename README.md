@@ -4,9 +4,6 @@
   <img src="art/banner.png" alt="Laravel OLM" width="100%">
 </p>
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/knackline/laravel-olm.svg?style=flat-square)](https://packagist.org/packages/knackline/laravel-olm)
-[![Total Downloads](https://img.shields.io/packagist/dt/knackline/laravel-olm.svg?style=flat-square)](https://packagist.org/packages/knackline/laravel-olm)
-
 **OLM** (On-device Language Models) is a Laravel connector for local / on-device LLM backends: **MLX**, **Ollama**, **LM Studio**, **llama.cpp**, and **vLLM**.
 
 Use one API in your Laravel app — switch backends with config.
