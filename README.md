@@ -18,8 +18,8 @@ Use one API in your Laravel app — switch backends with config.
 
 ## Requirements
 
-- PHP 8.1+
-- Laravel 9.x–12.x
+- PHP 8.1+ (8.3+ on Laravel 13)
+- Laravel 9.x–13.x
 - A running local inference server for the driver you choose
 
 ## Installation
