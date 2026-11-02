@@ -80,6 +80,41 @@ Run `llama-server` with an OpenAI-compatible HTTP API, e.g. port `8080`.
 vllm serve <model> --host 127.0.0.1 --port 8000
 ```
 
+## Local development
+
+`php artisan olm:serve` starts the configured default driver backend (`ollama serve`, `mlx_lm.server`, `llama-server`, or `vllm serve`). If the backend is already healthy, the command keeps the process alive so it can sit in a concurrent `dev` stack.
+
+### Laravel 13+ (`composer run dev` / `php artisan dev`)
+
+When `Illuminate\Foundation\DevCommands` is available, laravel-olm auto-registers process `olm` (`php artisan olm:serve`). Disable with:
+
+```env
+OLM_DEV=false
+```
+
+Or in your app:
+
+```php
+use Illuminate\Foundation\DevCommands;
+
+DevCommands::except('olm');
+```
+
+LM Studio is not registered (no CLI start path) — start its server in the LM Studio app.
+
+Override the shell command per driver with `serve` in config (or `OLM_*_SERVE` env vars).
+
+### Older apps (`npx concurrently` in `composer.json`)
+
+Append the OLM process to your existing `dev` script, for example:
+
+```json
+"dev": [
+    "Composer\\Config::disableProcessTimeout",
+    "npx concurrently -c \"#93c5fd,#c4b5fd,#fb7185,#fdba74,#86efac\" \"php artisan serve\" \"php artisan queue:listen --tries=1\" \"php artisan pail --timeout=0\" \"npm run dev\" \"php artisan olm:serve\" --names=server,queue,logs,vite,olm --kill-others"
+]
+```
+
 ## Usage
 
 ### Facade

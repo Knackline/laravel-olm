@@ -3,6 +3,8 @@
 namespace Knackline\Olm\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Knackline\Olm\Console\ServeCommand;
+use Knackline\Olm\Olm;
 use Knackline\Olm\OlmManager;
 
 class OlmServiceProvider extends ServiceProvider
@@ -24,9 +26,15 @@ class OlmServiceProvider extends ServiceProvider
     public function boot(): void
     {
         if ($this->app->runningInConsole()) {
+            $this->commands([
+                ServeCommand::class,
+            ]);
+
             $this->publishes([
                 __DIR__.'/../../config/olm.php' => config_path('olm.php'),
             ], 'olm-config');
         }
+
+        Olm::registerDevCommands();
     }
 }

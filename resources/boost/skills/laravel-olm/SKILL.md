@@ -53,6 +53,15 @@ Each driver config key supports `base_url`, `api_key`, `model`, `timeout` (defau
 
 A running local inference server is required for the chosen driver.
 
+### Local development (`composer run dev`)
+
+- `php artisan olm:serve` starts the default driver backend (`ollama`, `mlx`, `llamacpp`, `vllm`).
+- On Laravel 13+, the package auto-registers process `olm` with `DevCommands` when `OLM_DEV` is true (default).
+- Opt out: `OLM_DEV=false` or `DevCommands::except('olm')`.
+- LM Studio is not auto-started; start the server in the LM Studio GUI.
+- Older apps using `npx concurrently` in `composer.json`: add `"php artisan olm:serve"` and include `olm` in `--names=...`.
+- Per-driver `serve` / `OLM_*_SERVE` overrides the shell command.
+
 ## API
 
 ### Chat
